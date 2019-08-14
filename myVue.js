@@ -34,7 +34,7 @@ class MyVue{
         dep.notify();
       },
       get() {
-        Dep.target && dep.addDeps(Dep.target);
+        Dep.target && dep.addDep(Dep.target);
         return value;
       }
     })
@@ -48,7 +48,7 @@ class Dep{
   }
 
   //用来收集依赖
-  addDeps(dep){
+  addDep(dep){
     this.deps.push(dep)
   }
 
@@ -62,10 +62,10 @@ class Dep{
 class Watcher{
   constructor() {
     // 将当前watcher实例指定到Dep静态属性target
-    console.log(this)
     Dep.target = this;
   }
   update() {
     console.log("属性更新了");
   }
 }
+
