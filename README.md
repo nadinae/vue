@@ -88,4 +88,4 @@ defineReactive(data,key,value){
 ```
 将Watcher指向Dep的静态属性target从而将依赖收集添加到Dep的deps属性里面
 
-### 接下来进行编译及对**v- @ v-text v-html**等指令进行插值，事件的处理
+# 接下来进行编译及对**v- @ v-text v-html**等指令进行插值，事件的处理
