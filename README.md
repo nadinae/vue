@@ -1,7 +1,8 @@
-# vue
+# vue mvvm模式的实现原理
+
 vue源码解析及一些基本功能实现原理
 
-# vue底层原理关系图
+## vue底层原理关系图
 
 ![](img/vue.png)
 
@@ -215,4 +216,4 @@ class Watcher{
 
 ![](img/mvvm.png)
 
-# 至此一个简单的mvvm框架已经简单完成。
+## 至此一个简单的mvvm框架已经简单完成。
