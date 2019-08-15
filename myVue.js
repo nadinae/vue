@@ -5,8 +5,10 @@ class MyVue{
 
     this.observe(this.$data)
 
-    new Watcher()
-    this.$data.name
+    // created执行
+    if (options.created) {
+      options.created.call(this);
+    }        
   }
 
   //设置监听函数

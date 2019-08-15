@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Document</title>
-  <script src="myVue.js"></script>
 </head>
+
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <p>{{name}}</p>
+    <p v-text="name"></p>
+    <p>{{age}}</p>
+    <p>
+      {{person}}
+    </p>
+    <input type="text" v-model="name" />
+    <button @click="changeName">Hello World</button>
+    <div v-html="html"></div>
+  </div>
+  <script src="./compile.js"></script>
+  <script src="./myVue.js"></script>
+
   <script>
-    var myVue = new MyVue({
-      el:'#app',
-      data:{
-        name:'张三',
-        person:{
-          name:'李四',
-          age:18
+    const myVue = new MyVue({
+      el: "#app",
+      data: {
+        name: "这是张三",
+        age: 25,
+        html: "<button>这是一个测试按钮</button>"
+      },
+      created() {
+        console.log("开始啦");
+        setTimeout(() => {
+          this.name = "这是王五的测试";
+        }, 1500);
+      },
+      methods: {
+        changeName() {
+          this.name = "这时你是李四";
+          this.age = 12;
         }
       }
-    })
-    
-
+    });
   </script>
 </body>
+
 </html>

@@ -213,4 +213,6 @@ class Watcher{
 ```
 在Watcher的constructor中需要执行**this.vm[this.key]**触发**defineReactive**的**get**来完成所有属性的收集。
 
-* 至此一个简单的mvvm框架已经简单完成。
+![](img/mvvm.png)
+
+# 至此一个简单的mvvm框架已经简单完成。
