@@ -39,7 +39,21 @@ class MyVue{
       }
     })
   }
+  //设置属性代理
+  proxyData(key) {
+    Object.defineProperty(this,key,{
+      configurable:true,
+      enumerable:true,
+      set(newVal){
+        return this.$data[key] = newVal
+      },
+      get(){
+        return this.$data[key]
+      }
+    })
+  }
 }
+
 
 //设置Dep,用来管理watcher
 class Dep{
@@ -60,12 +74,17 @@ class Dep{
 
 //设置watcher
 class Watcher{
-  constructor() {
+  constructor(vm,key,cb) {
+    this.vm = vm;
+    this.key = key;
+    this.cb = cb;
     // 将当前watcher实例指定到Dep静态属性target
     Dep.target = this;
+    this.vm[this.key];//触发getter,从而添加依赖
+    Dep.target = null;
   }
   update() {
-    console.log("属性更新了");
+    this.cb.call(this.vm,this.vm[this.key])
   }
 }
 
