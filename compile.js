@@ -52,6 +52,16 @@ class Compile{
       node.addEventListener(dir, eventFun.bind(vm))
     }
   }
+  //双向绑定指令
+  model(node, vm, exp) {
+    // 指定input的value属性
+    this.update(node, vm, exp, "model");
+
+    // 视图对模型响应
+    node.addEventListener("input", e => {
+      vm[exp] = e.target.value;
+    });
+  }
   //text指令处理函数
   text(node,vm,val){
     this.update(node,vm,val,'text')
@@ -86,6 +96,10 @@ class Compile{
   }
   htmlUpdate(node, value) {
     node.innerHTML = value;
+  }
+  //双向绑定更新函数
+  modelUpdater(node, value) {
+    node.value = value;
   }
   //dom节点判断
   isEle(node){
